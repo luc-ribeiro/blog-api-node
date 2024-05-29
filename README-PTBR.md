@@ -6,7 +6,7 @@ Blog API
 <br>
 
 <div align="right">
-  Click <a href="https://github.com/luc-ribeiro/blog-api-node/blob/main/README.md">here</a> to view the english version.
+  Click <a href="https://github.com/luc-ribeiro/blog-api-node/blob/master/README.md">here</a> to view the english version.
 </div>
 
 ## 💻 Projeto
