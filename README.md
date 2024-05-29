@@ -7,7 +7,7 @@
 
 <div align="right">
     Clique <a href="https://github.com/luc-ribeiro/blog-api-node/blob/master/README-PTBR.md">aqui</a> para ver a versão em Português.
-</div
+</div>
 
 ## 💻 Project
 The project consists of a simple API for authors and their posts. It allows actions such as creating, listing, editing, and deleting posts.
