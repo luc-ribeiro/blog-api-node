@@ -1,17 +1,19 @@
 <h1 align="center">
-Blog API
+  Blog API
 <br>
 <br>
 </h1>
 <br>
 
-## 💻 Projeto
-Este projeto foi criado durante o curso de Node.js da B7Web.
+<div align="right">
+    Clique <a href="https://github.com/luc-ribeiro/blog-api-node/blob/master/README-PTBR.md">aqui</a> para ver a versão em Português.
+</div
 
-O projeto consiste em uma API simples de autores e seus posts. É possível realizar ações como criações, listagem, edições e deleções de posts.
-Os posts podem ser marcados como publicados ou não. 
+## 💻 Project
+The project consists of a simple API for authors and their posts. It allows actions such as creating, listing, editing, and deleting posts.
+Posts can be marked as published or not.
 
-## 🚀 Tecnologias
+## 🚀 Technologies
 
 - **Node.js** 
 - **Express**
@@ -22,22 +24,43 @@ Os posts podem ser marcados como publicados ou não.
 
 ## Endpoints
 
-#### Listando usuários e posts
+#### Listing Users and Posts
 
 <details>
- <summary><code>GET</code> <code><b>/users</b></code> <code>(retorna todos os usuários)</code></summary>
+ <summary><code>GET</code> <code><b>/users</b></code> <code>(returns all users)</code></summary>
 
-##### Parâmetros
+##### Parameters
 
-> Nenhum
+> None
 
-##### Respostas
+##### Responses
 
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `200`         | `application/json`                | JSON contendo todos os usuários                                     |
+> | `200`         | `application/json`                | JSON containing all users                                           |
 
-##### Exemplo cURL
+##### cURL Example
+
+> ```javascript
+>  curl -X GET -H "Content-Type: application/json" http://localhost:4000/users
+> ```
+
+</details>
+
+<details>
+ <summary><code>GET</code> <code><b>/posts</b></code> <code>(returns all posts)</code></summary>
+
+##### Parameters
+
+> None
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | JSON containing all blog posts                                      |
+
+##### cURL Example
 
 > ```javascript
 >  curl -X GET -H "Content-Type: application/json" http://localhost:4000/posts
@@ -46,42 +69,21 @@ Os posts podem ser marcados como publicados ou não.
 </details>
 
 <details>
- <summary><code>GET</code> <code><b>/posts</b></code> <code>(retorna todos os posts)</code></summary>
+ <summary><code>GET</code> <code><b>/post/{id}</b></code> <code>(returns the post with the specified ID)</code></summary>
 
-##### Parâmetros
-
-> Nenhum
-
-##### Respostas
-
-> | http code     | content-type                      | response                                                            |
-> |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `200`         | `application/json`                | JSON contendo todos os posts do blog                                |
-
-##### Exemplo cURL
-
-> ```javascript
->  curl -X GET -H "Content-Type: application/json" http://localhost:4000/posts
-> ```
-
-</details>
-
-<details>
- <summary><code>GET</code> <code><b>/post/{id}</b></code> <code>(retorna o post do ID específico)</code></summary>
-
-##### Parâmetros
+##### Parameters
 
 > | name   |  type      | data type      | description                                          |
 > |--------|------------|----------------|------------------------------------------------------|
-> | `id` |  required    | string         | O identificador único específico do post             |
+> | `id`   |  required  | string         | The unique identifier of the post                    |
 
-##### Respostas
+##### Responses
 
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `200`         | `application/json`                | JSON contendo somente o post do ID específico                       |
+> | `200`         | `application/json`                | JSON containing the post with the specified ID                      |
 
-##### Exemplo cURL
+##### cURL Example
 
 > ```javascript
 >  curl -X GET -H "Content-Type: application/json" http://localhost:4000/post/id
@@ -89,21 +91,21 @@ Os posts podem ser marcados como publicados ou não.
 
 </details>
 
-#### Criando um novo usuário ou post
+#### Creating a New User or Post
 
 <details>
- <summary><code>POST</code> <code><b>/post</b></code> <code>(cria um novo post)</code></summary>
+ <summary><code>POST</code> <code><b>/post</b></code> <code>(creates a new post)</code></summary>
 
-##### Parâmetros
+##### Parameters
 
 > | name      |  type     | data type               | description                                                           |
 > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | title     |  required | string                  | Título do post                                                        |
-> | body      |  required | string                  | Conteúdo do post                                                      |
-> | author    |  required | int                     | Identificador único do autor do post                                  |
+> | title     |  required | string                  | Title of the post                                                     |
+> | body      |  required | string                  | Content of the post                                                   |
+> | author    |  required | int                     | Unique identifier of the post author                                  |
 
 
-##### Respostas
+##### Responses
 
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
@@ -111,7 +113,7 @@ Os posts podem ser marcados como publicados ou não.
 > | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
 > | `405`         | `text/html;charset=utf-8`         | None                                                                |
 
-##### Exemplo cURL
+##### cURL Example
 
 > ```javascript
 >  curl -X POST -H "Content-Type: application/json" --data @post.json http://localhost:4000/posts
@@ -120,18 +122,18 @@ Os posts podem ser marcados como publicados ou não.
 </details>
 
 <details>
- <summary><code>POST</code> <code><b>/users</b></code> <code>(cria um novo user)</code></summary>
+ <summary><code>POST</code> <code><b>/users</b></code> <code>(creates a new user)</code></summary>
 
-##### Parâmetros
+##### Parameters
 
 > | name      |  type     | data type               | description                                                           |
 > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | email     |  required | string                  | E-mail do usuário                                                     |
-> | name      |  required | string                  | Nome do usuário                                                       |
-> | age       |  optional | int                     | Idade do usuário                                                      |
+> | email     |  required | string                  | User's email                                                          |
+> | name      |  required | string                  | User's name                                                           |
+> | age       |  optional | int                     | User's age                                                            |
 
 
-##### Respostas
+##### Responses
 
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
@@ -139,34 +141,34 @@ Os posts podem ser marcados como publicados ou não.
 > | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
 > | `405`         | `text/html;charset=utf-8`         | None                                                                |
 
-##### Exemplo cURL
+##### cURL Example
 
 > ```javascript
->  curl -X POST -H "Content-Type: application/json" --data @post.json http://localhost:4000/posts
+>  curl -X POST -H "Content-Type: application/json" --data @user.json http://localhost:4000/users
 > ```
 
 </details>
 
-#### Editando um post
+#### Editing a Post
 
 <details>
- <summary><code>PUT</code> <code><b>/post/{id}</b></code> <code>(edita um post)</code></summary>
+ <summary><code>PUT</code> <code><b>/post/{id}</b></code> <code>(edits a post)</code></summary>
 
-##### Parâmetros
+##### Parameters
 
 > | name      |  type     | data type               | description                                                           |
 > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | id        |  required | int                     | Identificador único do post                                           |
+> | id        |  required | int                     | Unique identifier of the post                                         |
 
-##### Respostas
+##### Responses
 
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `200`         | `text/plain;charset=UTF-8`        | Returns the post changed                                            |
+> | `200`         | `text/plain;charset=UTF-8`        | Returns the edited post                                             |
 > | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
 > | `405`         | `text/html;charset=utf-8`         | None                                                                |
 
-##### Exemplo cURL
+##### cURL Example
 
 > ```javascript
 >  curl -X PUT -H "Content-Type: application/json" --data @put.json http://localhost:4000/post/id
@@ -174,18 +176,18 @@ Os posts podem ser marcados como publicados ou não.
 
 </details>
 
-#### Deletando um post
+#### Deleting a Post
 
 <details>
- <summary><code>DELETE</code> <code><b>/post/{id}</b></code> <code>(deleta um post)</code></summary>
+ <summary><code>DELETE</code> <code><b>/post/{id}</b></code> <code>(deletes a post)</code></summary>
 
-##### Parâmetros
+##### Parameters
 
 > | name      |  type     | data type               | description                                                           |
 > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | id        |  required | int                     | Identificador único do post                                           |
+> | id        |  required | int                     | Unique identifier of the post                                         |
 
-##### Respostas
+##### Responses
 
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
@@ -193,7 +195,7 @@ Os posts podem ser marcados como publicados ou não.
 > | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
 > | `405`         | `text/html;charset=utf-8`         | None                                                                |
 
-##### Exemplo cURL
+##### cURL Example
 
 > ```javascript
 >  curl -X DELETE -H "Content-Type: application/json" http://localhost:4000/post/id
@@ -203,39 +205,34 @@ Os posts podem ser marcados como publicados ou não.
 
 <br>
 
-## :page_facing_up: Como utilizar
+## :page_facing_up: How to Use
 
-- Faça um clone deste repositório:
+- Clone this repository:
 
 ```sh
   $ git clone https://github.com/luc-ribeiro/blog-api-node.git
 ```
 
-- Instale as dependências:
+- Install the dependencies:
 
 ```sh
-  # com npm
+  # with npm
   $ npm install
 
-  # com yarn
+  # with yarn
   $ yarn install
 ```
 
-- Crie um arquivo ```.env``` na raiz do projeto seguindo as variáveis definidas no arquivo ```.env.example```
+- Create a `.env` file in the root of the project following the variables defined in the `.env.example` file.
 
-- Execute o comando:
+- Run the command:
 
 ```sh
-  # com npm
+  # with npm
   $ npm start
 
-  # com yarn
+  # with yarn
   $ yarn start
 ```
 
-- Acesse o projeto em `localhost:[PORTA DEFINIDA NO ARQUIVO .ENV]`
-
-
-## :memo: License
-
-Copyright © 2020 Lucas Ribeiro
+- Access the project at `localhost:[PORT DEFINED IN THE .ENV FILE]`
